@@ -3,12 +3,13 @@ const app = require("../src/server");
 
 describe("Backend API", () => {
 
-    test("Health endpoint should respond", async () => {
+    test("Status endpoint should respond successfully", async () => {
 
         const response = await request(app)
-            .get("/api/health");
+            .get("/api/status");
 
-        expect([200, 500]).toContain(response.statusCode);
+        expect(response.statusCode).toBe(200);
+        expect(response.body.status).toBe("UP");
 
     });
 

@@ -20,6 +20,13 @@ const pool = mysql.createPool({
     queueLimit: 0
 });
 
+app.get("/api/status", (req, res) => {
+    res.status(200).json({
+        status: "UP",
+        service: "Internship Management Backend"
+    });
+});
+
 app.get("/api/health", async (req, res) => {
 
     try {
