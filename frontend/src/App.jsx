@@ -1,18 +1,25 @@
 import { useEffect, useState } from "react";
 import "./App.css";
 
+const API_URL = import.meta.env.VITE_API_URL || "http://localhost:5000";
+
 function App() {
 
     const [internships, setInternships] = useState([]);
 
     useEffect(() => {
 
-        fetch("http://localhost:5000/api/internships")
-            .then(response => response.json())
-            .then(data => setInternships(data))
-            .catch(error => console.error(error));
-
-    }, []);
+    fetch(`${API_URL}/api/internships`)
+        .then(response => response.json())
+        .then(data => {
+            setInternships(data);
+            setLoading(false);
+        })
+        .catch(error => {
+            console.error(error);
+            setLoading(false);
+        });
+}, []);
 
     return (
 
