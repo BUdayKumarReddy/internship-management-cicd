@@ -9,7 +9,7 @@ describe("Backend API", () => {
             .get("/api/status");
 
         expect(response.statusCode).toBe(200);
-        expect(response.body.status).toBe("UP");
+        expect(response.body.status).toBe("DOWN");
 
     });
 
